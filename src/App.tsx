@@ -97,20 +97,20 @@ export default function App() {
       <header className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-xl font-semibold tracking-tight">Gastos</h1>
-          <p className="text-sm text-neutral-500">Tus datos se guardan solo en este navegador.</p>
+          <p className="text-sm text-neutral-400">Tus datos se guardan solo en este navegador.</p>
         </div>
         <div className="flex gap-2">
           <button
             type="button"
             onClick={handleExport}
-            className="rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-600 transition hover:bg-neutral-100"
+            className="rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-sm text-neutral-300 transition hover:bg-neutral-800"
           >
             Exportar
           </button>
           <button
             type="button"
             onClick={() => fileInput.current?.click()}
-            className="rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-600 transition hover:bg-neutral-100"
+            className="rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-sm text-neutral-300 transition hover:bg-neutral-800"
           >
             Importar
           </button>
@@ -127,11 +127,11 @@ export default function App() {
       <ExpenseForm editing={editing} onSubmit={handleSubmit} onCancelEdit={() => setEditing(null)} />
 
       {message && (
-        <p className="rounded-lg bg-neutral-900 px-3 py-2 text-sm text-white">{message}</p>
+        <p className="rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-2 text-sm text-neutral-100">{message}</p>
       )}
 
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="inline-flex rounded-lg border border-neutral-200 bg-white p-1">
+        <div className="inline-flex rounded-lg border border-neutral-800 bg-neutral-900 p-1">
           {PERIODS.map((item) => (
             <button
               key={item.id}
@@ -139,8 +139,8 @@ export default function App() {
               onClick={() => setPeriod(item.id)}
               className={`rounded-md px-3 py-1.5 text-sm transition ${
                 period === item.id
-                  ? 'bg-neutral-900 text-white'
-                  : 'text-neutral-600 hover:bg-neutral-100'
+                  ? 'bg-neutral-100 text-neutral-900'
+                  : 'text-neutral-400 hover:bg-neutral-800'
               }`}
             >
               {item.label}
@@ -160,7 +160,7 @@ export default function App() {
           <button
             type="button"
             onClick={() => setReference(new Date())}
-            className="rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-sm text-neutral-600 transition hover:bg-neutral-100"
+            className="rounded-lg border border-neutral-800 bg-neutral-900 px-3 py-1.5 text-sm text-neutral-300 transition hover:bg-neutral-800"
           >
             Hoy
           </button>
@@ -195,7 +195,7 @@ function NavButton({
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="h-8 w-8 rounded-lg border border-neutral-200 bg-white text-neutral-600 transition hover:bg-neutral-100"
+      className="h-8 w-8 rounded-lg border border-neutral-800 bg-neutral-900 text-neutral-300 transition hover:bg-neutral-800"
     >
       {children}
     </button>

@@ -12,6 +12,13 @@ import {
 import { formatCurrency } from '../lib/format'
 import { CATEGORY_COLORS } from '../lib/types'
 
+const tooltipStyle = {
+  backgroundColor: '#171717',
+  border: '1px solid #404040',
+  borderRadius: 8,
+  color: '#f5f5f5',
+}
+
 type Props = {
   total: number
   average: number
@@ -36,12 +43,19 @@ export function Summary({ total, average, averageLabel, count, byCategory, trend
         ) : (
           <ResponsiveContainer width="100%" height={220}>
             <PieChart>
-              <Pie data={byCategory} dataKey="value" nameKey="name" innerRadius={55} outerRadius={85}>
+              <Pie
+                data={byCategory}
+                dataKey="value"
+                nameKey="name"
+                innerRadius={55}
+                outerRadius={85}
+                stroke="#171717"
+              >
                 {byCategory.map((entry) => (
                   <Cell key={entry.name} fill={CATEGORY_COLORS[entry.name] ?? '#a3a3a3'} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value: number) => formatCurrency(value)} />
+              <Tooltip formatter={(value: number) => formatCurrency(value)} contentStyle={tooltipStyle} />
             </PieChart>
           </ResponsiveContainer>
         )}
@@ -53,10 +67,14 @@ export function Summary({ total, average, averageLabel, count, byCategory, trend
         ) : (
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={trend} margin={{ top: 8, right: 8, bottom: 0, left: -16 }}>
-              <XAxis dataKey="label" tickLine={false} axisLine={false} fontSize={11} />
-              <YAxis tickLine={false} axisLine={false} fontSize={11} width={56} />
-              <Tooltip formatter={(value: number) => formatCurrency(value)} cursor={{ fill: '#f5f5f5' }} />
-              <Bar dataKey="value" fill="#171717" radius={[4, 4, 0, 0]} />
+              <XAxis dataKey="label" tickLine={false} axisLine={false} fontSize={11} stroke="#737373" />
+              <YAxis tickLine={false} axisLine={false} fontSize={11} width={56} stroke="#737373" />
+              <Tooltip
+                formatter={(value: number) => formatCurrency(value)}
+                cursor={{ fill: '#262626' }}
+                contentStyle={tooltipStyle}
+              />
+              <Bar dataKey="value" fill="#e5e5e5" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         )}
@@ -67,8 +85,8 @@ export function Summary({ total, average, averageLabel, count, byCategory, trend
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-neutral-200 bg-white p-4">
-      <p className="text-xs font-medium text-neutral-500">{label}</p>
+    <div className="rounded-2xl border border-neutral-800 bg-neutral-900 p-4">
+      <p className="text-xs font-medium text-neutral-400">{label}</p>
       <p className="mt-1 text-2xl font-semibold tabular-nums">{value}</p>
     </div>
   )
@@ -84,8 +102,8 @@ function Card({
   children: React.ReactNode
 }) {
   return (
-    <div className={`rounded-2xl border border-neutral-200 bg-white p-4 ${className ?? ''}`}>
-      <p className="mb-2 text-xs font-medium text-neutral-500">{title}</p>
+    <div className={`rounded-2xl border border-neutral-800 bg-neutral-900 p-4 ${className ?? ''}`}>
+      <p className="mb-2 text-xs font-medium text-neutral-400">{title}</p>
       {children}
     </div>
   )
@@ -93,7 +111,7 @@ function Card({
 
 function Empty() {
   return (
-    <div className="flex h-[220px] items-center justify-center text-sm text-neutral-400">
+    <div className="flex h-[220px] items-center justify-center text-sm text-neutral-600">
       Sin datos
     </div>
   )

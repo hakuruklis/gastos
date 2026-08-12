@@ -12,7 +12,7 @@ type Props = {
 }
 
 const inputClass =
-  'w-full rounded-lg border border-neutral-200 bg-white px-3 py-2 text-sm outline-none transition focus:border-neutral-900'
+  'w-full rounded-lg border border-neutral-800 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 outline-none transition placeholder:text-neutral-600 focus:border-neutral-500'
 
 export function ExpenseForm({ editing, onSubmit, onCancelEdit }: Props) {
   const [amount, setAmount] = useState('')
@@ -52,11 +52,11 @@ export function ExpenseForm({ editing, onSubmit, onCancelEdit }: Props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm"
+      className="rounded-2xl border border-neutral-800 bg-neutral-900 p-4"
     >
       <div className="grid gap-3 sm:grid-cols-[1fr_1fr_1fr_1.5fr_auto] sm:items-end">
         <label className="block">
-          <span className="mb-1 block text-xs font-medium text-neutral-500">Importe</span>
+          <span className="mb-1 block text-xs font-medium text-neutral-400">Importe</span>
           <input
             className={inputClass}
             inputMode="decimal"
@@ -67,7 +67,7 @@ export function ExpenseForm({ editing, onSubmit, onCancelEdit }: Props) {
           />
         </label>
         <label className="block">
-          <span className="mb-1 block text-xs font-medium text-neutral-500">Categoría</span>
+          <span className="mb-1 block text-xs font-medium text-neutral-400">Categoría</span>
           <select
             className={inputClass}
             value={category}
@@ -82,7 +82,7 @@ export function ExpenseForm({ editing, onSubmit, onCancelEdit }: Props) {
           </select>
         </label>
         <label className="block">
-          <span className="mb-1 block text-xs font-medium text-neutral-500">Fecha</span>
+          <span className="mb-1 block text-xs font-medium text-neutral-400">Fecha</span>
           <input
             type="date"
             className={inputClass}
@@ -92,7 +92,7 @@ export function ExpenseForm({ editing, onSubmit, onCancelEdit }: Props) {
           />
         </label>
         <label className="block">
-          <span className="mb-1 block text-xs font-medium text-neutral-500">Nota</span>
+          <span className="mb-1 block text-xs font-medium text-neutral-400">Nota</span>
           <input
             className={inputClass}
             placeholder="Opcional"
@@ -104,7 +104,7 @@ export function ExpenseForm({ editing, onSubmit, onCancelEdit }: Props) {
         <div className="flex gap-2">
           <button
             type="submit"
-            className="h-[38px] rounded-lg bg-neutral-900 px-4 text-sm font-medium text-white transition hover:bg-neutral-700"
+            className="h-[38px] rounded-lg bg-neutral-100 px-4 text-sm font-medium text-neutral-900 transition hover:bg-white"
           >
             {editing ? 'Guardar' : 'Añadir'}
           </button>
@@ -115,14 +115,14 @@ export function ExpenseForm({ editing, onSubmit, onCancelEdit }: Props) {
                 reset()
                 onCancelEdit()
               }}
-              className="h-[38px] rounded-lg border border-neutral-200 px-3 text-sm text-neutral-600 transition hover:bg-neutral-100"
+              className="h-[38px] rounded-lg border border-neutral-800 px-3 text-sm text-neutral-300 transition hover:bg-neutral-800"
             >
               Cancelar
             </button>
           )}
         </div>
       </div>
-      {error && <p className="mt-2 text-xs text-red-600">{error}</p>}
+      {error && <p className="mt-2 text-xs text-red-400">{error}</p>}
     </form>
   )
 }
