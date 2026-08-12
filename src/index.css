@@ -6,6 +6,10 @@ body,
   height: 100%;
 }
 
+html {
+  color-scheme: dark;
+}
+
 body {
-  @apply bg-neutral-50 text-neutral-900 antialiased;
+  @apply bg-neutral-950 text-neutral-100 antialiased;
 }

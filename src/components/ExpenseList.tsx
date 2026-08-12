@@ -12,14 +12,14 @@ type Props = {
 export function ExpenseList({ expenses, onEdit, onRemove }: Props) {
   if (expenses.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-neutral-200 bg-white p-10 text-center text-sm text-neutral-500">
+      <div className="rounded-2xl border border-dashed border-neutral-800 bg-neutral-900 p-10 text-center text-sm text-neutral-400">
         No hay gastos en este periodo.
       </div>
     )
   }
 
   return (
-    <ul className="divide-y divide-neutral-100 overflow-hidden rounded-2xl border border-neutral-200 bg-white">
+    <ul className="divide-y divide-neutral-800 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900">
       {expenses.map((expense) => (
         <li key={expense.id} className="group flex items-center gap-3 px-4 py-3">
           <span
@@ -30,7 +30,7 @@ export function ExpenseList({ expenses, onEdit, onRemove }: Props) {
             <p className="truncate text-sm font-medium">
               {expense.note || expense.category}
             </p>
-            <p className="text-xs text-neutral-500">
+            <p className="text-xs text-neutral-400">
               {expense.category} · {formatShortDate(expense.date)}
             </p>
           </div>
@@ -41,14 +41,14 @@ export function ExpenseList({ expenses, onEdit, onRemove }: Props) {
             <button
               type="button"
               onClick={() => onEdit(expense)}
-              className="rounded-md px-2 py-1 text-xs text-neutral-500 transition hover:bg-neutral-100 hover:text-neutral-900"
+              className="rounded-md px-2 py-1 text-xs text-neutral-400 transition hover:bg-neutral-800 hover:text-neutral-100"
             >
               Editar
             </button>
             <button
               type="button"
               onClick={() => onRemove(expense.id)}
-              className="rounded-md px-2 py-1 text-xs text-neutral-500 transition hover:bg-red-50 hover:text-red-600"
+              className="rounded-md px-2 py-1 text-xs text-neutral-400 transition hover:bg-red-950 hover:text-red-400"
             >
               Borrar
             </button>
